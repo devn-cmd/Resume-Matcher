@@ -1,0 +1,14 @@
+{
+  "python":            ["python", "py"],
+  "machine learning":  ["machine learning", "ml"],
+  "natural language processing": ["natural language processing", "nlp"],
+  "deep learning":     ["deep learning", "dl"],
+  "tensorflow":        ["tensorflow", "tf"],
+  "pytorch":           ["pytorch", "torch"],
+  "sql":               ["sql", "structured query language"],
+  "amazon web services": ["amazon web services", "aws"],
+  "docker":            ["docker"],
+  "kubernetes":        ["kubernetes", "k8s"],
+  "react":             ["react", "react.js", "reactjs"],
+  "communication":     ["communication", "communications"]
+}
