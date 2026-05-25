@@ -6,4 +6,6 @@ data/raw/
 *.ckpt
 .embeddings_cache/
 .ipynb_checkpoints/
-.DS_Store
+.DS_Storedata/eval/UpdatedResumeDataSet.csv
+data/eval/resumes.csv
+sanity_run.py
