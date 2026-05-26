@@ -93,26 +93,40 @@ if "ranking" in st.session_state:
         r["suitable"] = r["Score"] >= threshold
     shown = [r for r in ranking if r["suitable"] or not only_suitable]
 
+    # df = pd.DataFrame([{
+    #     "Candidate": r["Candidate"],
+    #     "Score": r["Score"],
+    #     "Semantic": r["Semantic"],
+    #     "Skill match": r["Skill match"],
+    #     "Suitable": "\u2705" if r["suitable"] else "\u274C",
+    # } for r in shown])
+
+    # st.dataframe(
+    #     df, use_container_width=True, hide_index=True,
+    #     column_config={
+    #         "Score": st.column_config.ProgressColumn("Score", min_value=0.0, max_value=1.0, format="%.2f"),
+    #         "Semantic": st.column_config.ProgressColumn("Semantic", min_value=0.0, max_value=1.0, format="%.2f"),
+    #         "Skill match": st.column_config.ProgressColumn("Skill match", min_value=0.0, max_value=1.0, format="%.2f"),
+    #     },
+    # )
     df = pd.DataFrame([{
         "Candidate": r["Candidate"],
-        "Score": r["Score"],
-        "Semantic": r["Semantic"],
-        "Skill match": r["Skill match"],
+        "Score": r["Score"] * 100,
+        "Semantic": r["Semantic"] * 100,
+        "Skill match": r["Skill match"] * 100,
         "Suitable": "\u2705" if r["suitable"] else "\u274C",
     } for r in shown])
-
     st.dataframe(
         df, use_container_width=True, hide_index=True,
         column_config={
-            "Score": st.column_config.ProgressColumn("Score", min_value=0.0, max_value=1.0, format="%.2f"),
-            "Semantic": st.column_config.ProgressColumn("Semantic", min_value=0.0, max_value=1.0, format="%.2f"),
-            "Skill match": st.column_config.ProgressColumn("Skill match", min_value=0.0, max_value=1.0, format="%.2f"),
+            "Score": st.column_config.ProgressColumn("Score", min_value=0, max_value=100, format="%.0f%%"),
+            "Semantic": st.column_config.ProgressColumn("Semantic", min_value=0, max_value=100, format="%.0f%%"),
+            "Skill match": st.column_config.ProgressColumn("Skill match", min_value=0, max_value=100, format="%.0f%%"),
         },
     )
-
     st.download_button(
         "Download results as CSV",
-        df.to_csv(index=False).encode("utf-8"),
+        df.to_csv(index=False).encode("utf-8-sig"),
         file_name="ranked_candidates.csv", mime="text/csv",
     )
 
