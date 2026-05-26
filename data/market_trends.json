@@ -1,0 +1,219 @@
+{
+  "spring boot": {
+    "demand_score": 0.92,
+    "roadmap": [
+      {"step": 1, "action": "Learn Spring Core and Dependency Injection", "resource": "Spring Framework Documentation"},
+      {"step": 2, "action": "Build a RESTful API with Spring Boot", "resource": "Spring Guides (spring.io)"},
+      {"step": 3, "action": "Implement Security with Spring Security & JWT", "resource": "Java Brains YouTube Course"}
+    ]
+  },
+
+  "aws": {
+    "demand_score": 0.85,
+    "roadmap": [
+      {"step": 1, "action": "Learn Core Services: IAM, EC2, S3, VPC", "resource": "AWS Free Tier Hands-on Labs"},
+      {"step": 2, "action": "Deploy a FastAPI/Flask app using AWS Elastic Beanstalk", "resource": "FastAPI Deployment Docs"}
+    ]
+  },
+  "python": {
+    "demand_score": 0.95,
+    "roadmap": [
+      {"step": 1, "action": "Master Python fundamentals: syntax, data structures, OOP", "resource": "Python Official Documentation & Automate the Boring Stuff"},
+      {"step": 2, "action": "Learn advanced concepts: decorators, generators, context managers", "resource": "Fluent Python by Luciano Ramalho"},
+      {"step": 3, "action": "Build real-world projects: web apps, automation scripts, APIs", "resource": "Real Python Tutorials & GitHub Projects"}
+    ]
+  },
+  "machine learning": {
+    "demand_score": 0.93,
+    "roadmap": [
+      {"step": 1, "action": "Learn ML fundamentals: supervised/unsupervised learning, model evaluation", "resource": "Andrew Ng's Machine Learning Specialization (Coursera)"},
+      {"step": 2, "action": "Master scikit-learn: preprocessing, pipelines, model selection", "resource": "Hands-On Machine Learning with Scikit-Learn (O'Reilly)"},
+      {"step": 3, "action": "Implement end-to-end ML projects: data cleaning, feature engineering, deployment", "resource": "Kaggle Competitions & MLflow Documentation"}
+    ]
+  },
+  "natural language processing": {
+    "demand_score": 0.90,
+    "roadmap": [
+      {"step": 1, "action": "Learn NLP basics: tokenization, stemming, POS tagging, named entity recognition", "resource": "NLTK & spaCy Documentation"},
+      {"step": 2, "action": "Understand word embeddings and transformers: Word2Vec, BERT, GPT", "resource": "Hugging Face Transformers Course"},
+      {"step": 3, "action": "Build NLP applications: sentiment analysis, chatbots, text summarization", "resource": "Hugging Face NLP Course & Papers with Code"}
+    ]
+  },
+  "deep learning": {
+    "demand_score": 0.91,
+    "roadmap": [
+      {"step": 1, "action": "Understand neural network fundamentals: perceptrons, backpropagation, activation functions", "resource": "Deep Learning Specialization by Andrew Ng (Coursera)"},
+      {"step": 2, "action": "Master CNNs and RNNs for computer vision and sequence modeling", "resource": "Deep Learning with PyTorch or TensorFlow (O'Reilly)"},
+      {"step": 3, "action": "Explore advanced architectures: GANs, Transformers, diffusion models", "resource": "Papers with Code & PyTorch/TensorFlow Official Tutorials"}
+    ]
+  },
+  "tensorflow": {
+    "demand_score": 0.87,
+    "roadmap": [
+      {"step": 1, "action": "Learn TensorFlow basics: tensors, graphs, eager execution", "resource": "TensorFlow Official Getting Started Guide"},
+      {"step": 2, "action": "Build models with Keras API: sequential, functional, subclassing", "resource": "TensorFlow Keras Documentation"},
+      {"step": 3, "action": "Deploy models: TensorFlow Serving, TensorFlow Lite, TF.js", "resource": "TensorFlow Deployment Guides & Google Cloud Tutorials"}
+    ]
+  },
+  "pytorch": {
+    "demand_score": 0.89,
+    "roadmap": [
+      {"step": 1, "action": "Learn PyTorch fundamentals: tensors, autograd, nn.Module", "resource": "PyTorch Official 60-Minute Blitz"},
+      {"step": 2, "action": "Build and train neural networks: CNNs, RNNs, custom datasets", "resource": "PyTorch Tutorials & Deep Learning with PyTorch (PyTorch.org)"},
+      {"step": 3, "action": "Production deployment: TorchScript, ONNX export, PyTorch Lightning", "resource": "PyTorch Deployment Docs & Lightning AI Tutorials"}
+    ]
+  },
+  "sql": {
+    "demand_score": 0.94,
+    "roadmap": [
+      {"step": 1, "action": "Master SQL basics: SELECT, JOIN, GROUP BY, subqueries", "resource": "SQLZoo & W3Schools SQL Tutorial"},
+      {"step": 2, "action": "Learn advanced SQL: window functions, CTEs, indexing, query optimization", "resource": "Mode Analytics SQL Tutorial & Use The Index, Luke"},
+      {"step": 3, "action": "Database design: normalization, ER diagrams, stored procedures, transactions", "resource": "Database Design for Mere Mortals & PostgreSQL Official Docs"}
+    ]
+  },
+  "amazon web services": {
+    "demand_score": 0.85,
+    "roadmap": [
+      {"step": 1, "action": "Learn Core Services: IAM, EC2, S3, VPC", "resource": "AWS Free Tier Hands-on Labs"},
+      {"step": 2, "action": "Deploy a FastAPI/Flask app using AWS Elastic Beanstalk", "resource": "FastAPI Deployment Docs"},
+      {"step": 3, "action": "Master serverless: Lambda, API Gateway, DynamoDB, Step Functions", "resource": "AWS Serverless Application Repository & Serverless Stack"}
+    ]
+  },
+  "docker": {
+    "demand_score": 0.88,
+    "roadmap": [
+      {"step": 1, "action": "Understand Containerization vs VMs", "resource": "Docker Official Getting Started Guide"},
+      {"step": 2, "action": "Write Dockerfiles and use Docker Compose", "resource": "Traversy Media Docker Crash Course"},
+      {"step": 3, "action": "Multi-stage builds for optimizing Python/Java images", "resource": "Docker Docs"}
+    ]
+  },
+  "kubernetes": {
+    "demand_score": 0.86,
+    "roadmap": [
+      {"step": 1, "action": "Understand Kubernetes architecture: pods, services, deployments, namespaces", "resource": "Kubernetes Official Documentation & Katacoda Tutorials"},
+      {"step": 2, "action": "Deploy applications: kubectl, Helm charts, ingress controllers", "resource": "Kubernetes by Example & Helm Docs"},
+      {"step": 3, "action": "Production operations: monitoring (Prometheus/Grafana), autoscaling, security", "resource": "Kubernetes The Hard Way & Cloud Native Computing Foundation Courses"}
+    ]
+  },
+  "react": {
+    "demand_score": 0.92,
+    "roadmap": [
+      {"step": 1, "action": "Learn React fundamentals: JSX, components, props, state, hooks", "resource": "React Official Documentation (react.dev)"},
+      {"step": 2, "action": "Master state management: Context API, Redux, Zustand", "resource": "Redux Toolkit Docs & React Query/TanStack Query"},
+      {"step": 3, "action": "Build production apps: routing (React Router), testing (Jest/RTL), performance optimization", "resource": "Epic React by Kent C. Dodds & Frontend Masters"}
+    ]
+  },
+  "communication": {
+    "demand_score": 0.96,
+    "roadmap": [
+      {"step": 1, "action": "Develop active listening and clear verbal communication skills", "resource": "Crucial Conversations by Patterson et al. & Toastmasters"},
+      {"step": 2, "action": "Master written communication: technical documentation, emails, reports", "resource": "The Pyramid Principle by Barbara Minto & Google Technical Writing Course"},
+      {"step": 3, "action": "Lead presentations and cross-functional collaboration: storytelling, stakeholder management", "resource": "TED Talks & Harvard Business Review Communication Guides"}
+    ]
+  },
+  "java": {
+    "demand_score": 0.90,
+    "roadmap": [
+      {"step": 1, "action": "Master Java fundamentals: OOP, collections, exception handling, generics", "resource": "Head First Java (O'Reilly) & Java Official Tutorials"},
+      {"step": 2, "action": "Learn advanced Java: streams, lambdas, concurrency, JVM internals", "resource": "Java Concurrency in Practice & Effective Java by Joshua Bloch"},
+      {"step": 3, "action": "Build enterprise applications: design patterns, JDBC, networking, Java modules", "resource": "Spring Framework Documentation & Baeldung Java Guides"}
+    ]
+  },
+  "spring": {
+    "demand_score": 0.88,
+    "roadmap": [
+      {"step": 1, "action": "Learn Spring Core: IoC container, bean lifecycle, dependency injection", "resource": "Spring Framework Official Documentation"},
+      {"step": 2, "action": "Master Spring Data, Spring MVC, and Spring Security basics", "resource": "Baeldung Spring Tutorials & Spring Guides"},
+      {"step": 3, "action": "Build microservices with Spring Cloud: service discovery, config server, circuit breakers", "resource": "Spring Cloud Documentation & Microservices with Spring Boot (Udemy)"}
+    ]
+  },
+
+  "hibernate": {
+    "demand_score": 0.82,
+    "roadmap": [
+      {"step": 1, "action": "Learn ORM concepts and Hibernate basics: Session, Transaction, CRUD operations", "resource": "Hibernate Official Documentation & Baeldung Hibernate Guide"},
+      {"step": 2, "action": "Master mapping strategies: annotations, relationships (OneToOne, OneToMany, ManyToMany)", "resource": "Java Persistence with Hibernate (Manning)"},
+      {"step": 3, "action": "Optimize performance: caching (1st/2nd level), lazy loading, HQL/Criteria queries", "resource": "Hibernate Performance Tuning Guides & Vlad Mihalcea's Blog"}
+    ]
+  },
+  "jpa": {
+    "demand_score": 0.83,
+    "roadmap": [
+      {"step": 1, "action": "Understand JPA specification: EntityManager, persistence context, entity lifecycle", "resource": "JPA Specification & Baeldung JPA Guide"},
+      {"step": 2, "action": "Learn JPQL, criteria API, and advanced mappings: inheritance, composite keys", "resource": "Pro JPA 2 in Java EE 8 (Apress)"},
+      {"step": 3, "action": "Integrate with Spring Data JPA: repositories, custom queries, pagination, auditing", "resource": "Spring Data JPA Documentation & Spring Guides"}
+    ]
+  },
+  "maven": {
+    "demand_score": 0.78,
+    "roadmap": [
+      {"step": 1, "action": "Learn Maven basics: POM structure, lifecycle, plugins, dependencies", "resource": "Maven Official Documentation & Maven by Example (Sonatype)"},
+      {"step": 2, "action": "Master multi-module projects: parent POMs, dependency management, profiles", "resource": "Maven: The Complete Reference (Sonatype)"},
+      {"step": 3, "action": "CI/CD integration: Maven with Jenkins/GitHub Actions, artifact repositories (Nexus/Artifactory)", "resource": "Jenkins Pipeline Docs & GitHub Actions for Java"}
+    ]
+  },
+  "gradle": {
+    "demand_score": 0.80,
+    "roadmap": [
+      {"step": 1, "action": "Learn Gradle fundamentals: build scripts (Groovy/Kotlin DSL), tasks, plugins", "resource": "Gradle Official Documentation & Gradle Kotlin DSL Primer"},
+      {"step": 2, "action": "Build multi-project builds: dependency management, custom tasks, build variants", "resource": "Gradle User Manual & Gradle Enterprise Docs"},
+      {"step": 3, "action": "Optimize builds: build cache, incremental builds, parallel execution, CI integration", "resource": "Gradle Performance Guides & Gradle Summit Talks"}
+    ]
+  },
+  "junit": {
+    "demand_score": 0.84,
+    "roadmap": [
+      {"step": 1, "action": "Learn JUnit 5 basics: annotations, assertions, test lifecycle, parameterized tests", "resource": "JUnit 5 User Guide & Baeldung JUnit 5 Tutorial"},
+      {"step": 2, "action": "Master mocking with Mockito: stubs, spies, verify, argument matchers", "resource": "Mockito Documentation & Baeldung Mockito Guide"},
+      {"step": 3, "action": "Advanced testing: integration tests with Testcontainers, code coverage (JaCoCo), TDD/BDD", "resource": "Testcontainers Docs & Growing Object-Oriented Software by Freeman & Pryce"}
+    ]
+  },
+  "microservices": {
+    "demand_score": 0.91,
+    "roadmap": [
+      {"step": 1, "action": "Understand microservices principles: domain-driven design, bounded contexts, loose coupling", "resource": "Building Microservices by Sam Newman (O'Reilly)"},
+      {"step": 2, "action": "Implement inter-service communication: REST, gRPC, message brokers (RabbitMQ/Kafka)", "resource": "Microservices.io by Chris Richardson & Confluent Kafka Tutorials"},
+      {"step": 3, "action": "Production patterns: service mesh (Istio), observability (distributed tracing), CI/CD, resilience", "resource": "The Tao of Microservices & CNCF Landscape Guides"}
+    ]
+  },
+  "rest api": {
+    "demand_score": 0.93,
+    "roadmap": [
+      {"step": 1, "action": "Learn REST principles: HTTP methods, status codes, resource naming, statelessness", "resource": "REST API Tutorial (restfulapi.net) & MDN Web Docs"},
+      {"step": 2, "action": "Design APIs: OpenAPI/Swagger, versioning, pagination, authentication (OAuth2/JWT)", "resource": "API Design Patterns by JJ Geewax & OpenAPI Specification"},
+      {"step": 3, "action": "Build and secure APIs: rate limiting, caching, CORS, documentation, testing", "resource": "Postman API Testing & OWASP API Security Top 10"}
+    ]
+  },
+  "git": {
+    "demand_score": 0.95,
+    "roadmap": [
+      {"step": 1, "action": "Learn Git basics: init, clone, commit, branch, merge, remote repositories", "resource": "Pro Git Book (git-scm.com) & GitHub Git Cheat Sheet"},
+      {"step": 2, "action": "Master advanced Git: rebasing, cherry-picking, stashing, resolving conflicts, Git hooks", "resource": "Atlassian Git Tutorials & GitKraken Learn Git"},
+      {"step": 3, "action": "Collaborative workflows: GitFlow, trunk-based development, pull requests, code review", "resource": "GitHub Flow & GitLab Workflow Documentation"}
+    ]
+  },
+  "ci/cd": {
+    "demand_score": 0.90,
+    "roadmap": [
+      {"step": 1, "action": "Understand CI/CD concepts: automated builds, testing, deployment pipelines", "resource": "Continuous Delivery by Jez Humble & David Farley (Addison-Wesley)"},
+      {"step": 2, "action": "Implement with GitHub Actions/GitLab CI: workflows, runners, secrets, matrix builds", "resource": "GitHub Actions Documentation & GitLab CI/CD Docs"},
+      {"step": 3, "action": "Advanced DevOps: blue-green deployment, canary releases, infrastructure as code (Terraform), monitoring", "resource": "The DevOps Handbook & Terraform Documentation"}
+    ]
+  },
+  "mysql": {
+    "demand_score": 0.87,
+    "roadmap": [
+      {"step": 1, "action": "Learn MySQL basics: installation, CRUD operations, data types, basic queries", "resource": "MySQL Official Documentation & MySQL Tutorial (mysqltutorial.org)"},
+      {"step": 2, "action": "Master advanced SQL: joins, subqueries, stored procedures, triggers, views", "resource": "High Performance MySQL (O'Reilly) & Percona Blog"},
+      {"step": 3, "action": "Database administration: replication, partitioning, backup/recovery, performance tuning, InnoDB internals", "resource": "MySQL 8.0 Reference Manual & Planet MySQL"}
+    ]
+  },
+  "postgresql": {
+    "demand_score": 0.89,
+    "roadmap": [
+      {"step": 1, "action": "Learn PostgreSQL basics: installation, psql, data types, basic SQL", "resource": "PostgreSQL Official Documentation & PostgreSQL Tutorial"},
+      {"step": 2, "action": "Master advanced features: JSONB, full-text search, window functions, CTEs, indexing", "resource": "The Art of PostgreSQL by Dimitri Fontaine & PostgreSQL Wiki"},
+      {"step": 3, "action": "Production skills: replication (streaming/logical), partitioning, connection pooling (PgBouncer), tuning", "resource": "PostgreSQL High Availability & Percona PostgreSQL Blog"}
+    ]
+  }
+}

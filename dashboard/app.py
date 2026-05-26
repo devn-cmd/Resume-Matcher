@@ -73,7 +73,8 @@ if st.button("Rank candidates"):
         # store plain data so slider/filter reruns stay cheap (no re-embedding)
             ranking = []
             for r in results:
-                info = explain(resumes[r.resume_id], set(r.matched_skills), extractor)
+                # info = explain(resumes[r.resume_id], set(r.matched_skills), extractor)
+                info = explain(resumes[r.resume_id], set(r.matched_skills), set(r.missing_skills), extractor)
                 ranking.append({
                     "Candidate": r.resume_id,
                     "Score": r.final_score,
@@ -84,6 +85,7 @@ if st.button("Rank candidates"):
                     "evidence": info["evidence"],
                     "experience": [e.raw for e in info["structured"].experience][:3],
                     "education": [e.raw for e in info["structured"].education][:3],
+                    "recommendations": info.get("recommendations", []),
                 })
         st.session_state["ranking"] = ranking
 
@@ -141,7 +143,22 @@ if "ranking" in st.session_state:
                     st.markdown(f"- **{skill}**" + (f" — _{sent}_" if sent else ""))
             else:
                 st.markdown("_none_")
+            
             st.markdown(f"**Missing skills:** {', '.join(r['missing']) if r['missing'] else '—'}")
+            
+            # --- NEW UI SECTION FOR ROADMAPS ---
+            if r.get("recommendations"):
+                st.markdown("---")
+                st.markdown("🚀 **Suggested Upskilling Roadmap:**")
+                for rec in r["recommendations"]:
+                    # Show the skill and its market demand score
+                    st.markdown(f"**{rec['skill']}** *(Market Demand: {rec['demand_score']})*")
+                    # Loop through the steps
+                    for step in rec['roadmap']:
+                        st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;• **Step {step['step']}:** {step['action']} — [{step['resource']}]")
+                st.markdown("---")
+            # -----------------------------------
+
             if r["experience"]:
                 st.markdown("**Experience:**")
                 for e in r["experience"]:
