@@ -10,5 +10,20 @@
   "docker":            ["docker"],
   "kubernetes":        ["kubernetes", "k8s"],
   "react":             ["react", "react.js", "reactjs"],
-  "communication":     ["communication", "communications"]
+  "communication":     ["communication", "communications"],
+
+  "java":              ["java"],
+  "spring":            ["spring", "spring framework"],
+  "spring boot":       ["spring boot", "springboot"],
+  "hibernate":         ["hibernate"],
+  "jpa":               ["jpa", "java persistence api"],
+  "maven":             ["maven"],
+  "gradle":            ["gradle"],
+  "junit":             ["junit"],
+  "microservices":     ["microservices", "microservice"],
+  "rest api":          ["rest api", "rest apis", "restful api", "restful"],
+  "git":               ["git"],
+  "ci/cd":             ["ci/cd", "cicd", "continuous integration", "continuous deployment"],
+  "mysql":             ["mysql"],
+  "postgresql":        ["postgresql", "postgres"]
 }
