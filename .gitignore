@@ -9,3 +9,5 @@ data/raw/
 .DS_Storedata/eval/UpdatedResumeDataSet.csv
 data/eval/resumes.csv
 sanity_run.py
+data/eval/UpdatedResumeDataSet.csv
+data/eval/UpdatedResumeDataSet.csv
