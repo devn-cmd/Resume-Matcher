@@ -3,6 +3,9 @@ import tempfile
 
 import pandas as pd
 import streamlit as st
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.ingestion import read_document
 from src.matching import ResumeMatcher
@@ -71,13 +74,18 @@ if st.button("Rank candidates"):
             for r in results
         ]
 
+
 # --- Render from session: reruns cheaply when slider/filter change ---
 if "ranking" in st.session_state:
     df = pd.DataFrame(st.session_state["ranking"])
-    df["Suitable"] = df["Score"] >= threshold
+    df["_suitable"] = df["Score"] >= threshold
 
     if only_suitable:
-        df = df[df["Suitable"]]
+        df = df[df["_suitable"]]
+
+    # green check / red cross (unicode escapes avoid encoding issues)
+    df["Suitable"] = df["_suitable"].map(lambda ok: "\u2705" if ok else "\u274C")
+    df = df.drop(columns="_suitable")
 
     st.dataframe(
         df,
@@ -90,14 +98,14 @@ if "ranking" in st.session_state:
                 "Semantic", min_value=0.0, max_value=1.0, format="%.2f"),
             "Skill match": st.column_config.ProgressColumn(
                 "Skill match", min_value=0.0, max_value=1.0, format="%.2f"),
-            "Suitable": st.column_config.CheckboxColumn("Suitable"),
         },
     )
 
-    # --- Export (Step 4) ---
+    # --- Export ---
     st.download_button(
         "Download results as CSV",
         df.to_csv(index=False).encode("utf-8"),
         file_name="ranked_candidates.csv",
         mime="text/csv",
     )
+
