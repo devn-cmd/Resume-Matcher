@@ -9,7 +9,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.ingestion import read_document
 from src.matching import ResumeMatcher
-
+from src.skills import SkillExtractor
+from src.explain import explain
 # default threshold from config, with a safe fallback
 try:
     from config import MATCH_THRESHOLD
@@ -31,6 +32,12 @@ matcher = get_matcher()
 st.title("Resume Screening & Skill Matching")
 st.caption("Upload candidate resumes, paste a job description, and rank by fit.")
 
+@st.cache_resource
+def get_extractor():
+    db = Path(__file__).resolve().parent.parent / "data" / "skills_db.json"
+    return SkillExtractor(str(db))
+
+extractor = get_extractor()
 # --- JD + uploads side by side (Step 5) ---
 col1, col2 = st.columns(2)
 with col1:
@@ -64,48 +71,82 @@ if st.button("Rank candidates"):
                 os.unlink(path)
             results = matcher.rank(jd, resumes)
         # store plain data so slider/filter reruns stay cheap (no re-embedding)
-        st.session_state["ranking"] = [
-            {
-                "Candidate": r.resume_id,
-                "Score": r.final_score,
-                "Semantic": r.semantic_score,
-                "Skill match": r.skill_score,
-            }
-            for r in results
-        ]
+            ranking = []
+            for r in results:
+                info = explain(resumes[r.resume_id], set(r.matched_skills), extractor)
+                ranking.append({
+                    "Candidate": r.resume_id,
+                    "Score": r.final_score,
+                    "Semantic": r.semantic_score,
+                    "Skill match": r.skill_score,
+                    "matched": list(r.matched_skills),
+                    "missing": list(r.missing_skills),
+                    "evidence": info["evidence"],
+                    "experience": [e.raw for e in info["structured"].experience][:3],
+                    "education": [e.raw for e in info["structured"].education][:3],
+                })
+        st.session_state["ranking"] = ranking
 
-
-# --- Render from session: reruns cheaply when slider/filter change ---
 if "ranking" in st.session_state:
-    df = pd.DataFrame(st.session_state["ranking"])
-    df["_suitable"] = df["Score"] >= threshold
+    ranking = st.session_state["ranking"]
+    for r in ranking:
+        r["suitable"] = r["Score"] >= threshold
+    shown = [r for r in ranking if r["suitable"] or not only_suitable]
 
-    if only_suitable:
-        df = df[df["_suitable"]]
+    # df = pd.DataFrame([{
+    #     "Candidate": r["Candidate"],
+    #     "Score": r["Score"],
+    #     "Semantic": r["Semantic"],
+    #     "Skill match": r["Skill match"],
+    #     "Suitable": "\u2705" if r["suitable"] else "\u274C",
+    # } for r in shown])
 
-    # green check / red cross (unicode escapes avoid encoding issues)
-    df["Suitable"] = df["_suitable"].map(lambda ok: "\u2705" if ok else "\u274C")
-    df = df.drop(columns="_suitable")
-
+    # st.dataframe(
+    #     df, use_container_width=True, hide_index=True,
+    #     column_config={
+    #         "Score": st.column_config.ProgressColumn("Score", min_value=0.0, max_value=1.0, format="%.2f"),
+    #         "Semantic": st.column_config.ProgressColumn("Semantic", min_value=0.0, max_value=1.0, format="%.2f"),
+    #         "Skill match": st.column_config.ProgressColumn("Skill match", min_value=0.0, max_value=1.0, format="%.2f"),
+    #     },
+    # )
+    df = pd.DataFrame([{
+        "Candidate": r["Candidate"],
+        "Score": r["Score"] * 100,
+        "Semantic": r["Semantic"] * 100,
+        "Skill match": r["Skill match"] * 100,
+        "Suitable": "\u2705" if r["suitable"] else "\u274C",
+    } for r in shown])
     st.dataframe(
-        df,
-        use_container_width=True,
-        hide_index=True,
+        df, use_container_width=True, hide_index=True,
         column_config={
-            "Score": st.column_config.ProgressColumn(
-                "Score", min_value=0.0, max_value=1.0, format="%.2f"),
-            "Semantic": st.column_config.ProgressColumn(
-                "Semantic", min_value=0.0, max_value=1.0, format="%.2f"),
-            "Skill match": st.column_config.ProgressColumn(
-                "Skill match", min_value=0.0, max_value=1.0, format="%.2f"),
+            "Score": st.column_config.ProgressColumn("Score", min_value=0, max_value=100, format="%.0f%%"),
+            "Semantic": st.column_config.ProgressColumn("Semantic", min_value=0, max_value=100, format="%.0f%%"),
+            "Skill match": st.column_config.ProgressColumn("Skill match", min_value=0, max_value=100, format="%.0f%%"),
         },
     )
-
-    # --- Export ---
     st.download_button(
         "Download results as CSV",
-        df.to_csv(index=False).encode("utf-8"),
-        file_name="ranked_candidates.csv",
-        mime="text/csv",
+        df.to_csv(index=False).encode("utf-8-sig"),
+        file_name="ranked_candidates.csv", mime="text/csv",
     )
 
+    st.subheader("Skill breakdown")
+    for r in shown:
+        flag = "\u2705" if r["suitable"] else "\u274C"
+        with st.expander(f"{flag}  {r['Candidate']}"):
+            st.markdown("**Matched skills (with evidence):**")
+            if r["matched"]:
+                for skill in r["matched"]:
+                    sent = r["evidence"].get(skill)
+                    st.markdown(f"- **{skill}**" + (f" — _{sent}_" if sent else ""))
+            else:
+                st.markdown("_none_")
+            st.markdown(f"**Missing skills:** {', '.join(r['missing']) if r['missing'] else '—'}")
+            if r["experience"]:
+                st.markdown("**Experience:**")
+                for e in r["experience"]:
+                    st.markdown(f"- {e}")
+            if r["education"]:
+                st.markdown("**Education:**")
+                for e in r["education"]:
+                    st.markdown(f"- {e}")
