@@ -11,3 +11,4 @@ data/eval/resumes.csv
 sanity_run.py
 data/eval/UpdatedResumeDataSet.csv
 data/eval/UpdatedResumeDataSet.csv
+data/active_model.joblib
