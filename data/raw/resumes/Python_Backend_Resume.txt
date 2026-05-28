@@ -1,0 +1,28 @@
+Devadutt N
+Python / Backend Developer
+Email: devadethworkemail@gmail.com | Phone: +91-7736696955 | Kochi, Kerala
+
+SUMMARY
+Backend Developer with expertise in building scalable APIs, full-stack web platforms, and automated workflows using Python, FastAPI, Node.js, and React. Proven ability to integrate databases and deploy containerized applications.
+
+TECHNICAL SKILLS
+Languages: Python, JavaScript, HTML, CSS, SQL
+Web Development: React.js, Node.js, Express.js, FastAPI, Uvicorn, REST APIs
+Tools & Frameworks: Git, Docker, Docker Compose, PostgreSQL, Google Drive API, OAuth
+
+WORK EXPERIENCE
+Data Science Intern | Luminar Technolab | Kochi (Jul 2025 - Feb 2026)
+- Engineered automated data processing pipelines using Python and SQL.
+- Built interactive reporting dashboards to improve decision-making efficiency by 20%.
+
+RPA Developer | RISS Technologies | Kozhikode (Jun 2024 - Aug 2024)
+- Developed automated workflows for large-scale e-commerce web scraping using Python.
+- Deployed automated email exception handling systems and APIs.
+
+EDUCATION
+BSc Computer Science | RSM SNDP Yogam Arts & Science College, Kozhikode (2022-2025)
+
+PROJECTS
+- Stage Decor Event Booking Platform (Apr 2026): Developed a full-stack booking platform using React, FastAPI, and PostgreSQL featuring a JWT-secured admin panel.
+- Maintenance Decision Support System (Mar 2026): Developed a full-stack maintenance application with React, Node.js, and a PostgreSQL database.
+- Automated API Pipeline (May 2026): Containerized a FastAPI backend via Docker, integrating Slack SDK and Google APIs for event-triggered workflows.

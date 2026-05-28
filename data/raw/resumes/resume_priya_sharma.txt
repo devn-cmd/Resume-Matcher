@@ -1,0 +1,30 @@
+Priya Sharma
+priya.sharma@email.com | +91 98765 43210 | Bengaluru, India
+
+SUMMARY
+Data Scientist with 4 years of experience building machine learning and NLP
+models in production. Strong in Python, statistics, and turning messy data into
+clear business insights.
+
+EXPERIENCE
+Senior Data Scientist - Insight Analytics Pvt Ltd
+Jan 2022 - Present
+Built text classification and NLP models for customer feedback analysis.
+Improved churn prediction accuracy by 18% using scikit-learn and PyTorch.
+Wrote SQL pipelines to clean and join large datasets with pandas.
+
+Data Scientist - DataBridge Solutions
+Jun 2020 - Dec 2021
+Developed machine learning models for demand forecasting.
+Created dashboards and visualizations for business stakeholders.
+
+EDUCATION
+M.S. Data Science
+Indian Institute of Science, 2020
+
+SKILLS
+Python, machine learning, NLP, scikit-learn, PyTorch, SQL, pandas,
+statistics, data visualization
+
+CERTIFICATIONS
+Deep Learning Specialization - Coursera, 2021

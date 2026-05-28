@@ -1,0 +1,29 @@
+Arjun Mehta
+arjun.mehta@email.com | +91 91234 56789 | Pune, India
+
+SUMMARY
+Machine Learning Engineer focused on NLP and deep learning. Comfortable taking
+models from notebook to production.
+
+EXPERIENCE
+Machine Learning Engineer - NeuralWorks
+Mar 2021 - Present
+Built and deployed NLP models for document understanding using PyTorch.
+Trained text classifiers and named-entity recognition models.
+Used Python and pandas for large-scale data preprocessing.
+
+Junior ML Engineer - CodeMatrix
+Jul 2019 - Feb 2021
+Implemented machine learning pipelines with scikit-learn.
+Wrote SQL queries for feature extraction.
+
+EDUCATION
+B.Tech Computer Science
+National Institute of Technology, 2019
+
+SKILLS
+Python, machine learning, deep learning, NLP, PyTorch, TensorFlow,
+scikit-learn, SQL, pandas
+
+CERTIFICATIONS
+TensorFlow Developer Certificate, 2022

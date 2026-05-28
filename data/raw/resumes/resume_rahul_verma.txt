@@ -1,0 +1,25 @@
+Rahul Verma
+rahul.verma@email.com | +91 90011 22334 | Hyderabad, India
+
+SUMMARY
+Backend software developer with 5 years building web services and APIs.
+Some exposure to Python scripting.
+
+EXPERIENCE
+Backend Developer - WebForge Technologies
+Feb 2020 - Present
+Built REST APIs and microservices in Java and Spring Boot.
+Wrote occasional Python scripts for automation tasks.
+Managed PostgreSQL databases and wrote SQL queries.
+
+Software Engineer - AppNova
+Aug 2017 - Jan 2020
+Developed backend features for e-commerce platforms.
+Optimized database performance.
+
+EDUCATION
+B.E. Information Technology
+Osmania University, 2017
+
+SKILLS
+Java, Spring Boot, Python, SQL, REST APIs, PostgreSQL, Docker

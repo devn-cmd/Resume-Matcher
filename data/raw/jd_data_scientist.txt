@@ -1,0 +1,22 @@
+Data Scientist
+
+We are looking for a Data Scientist to join our analytics team. You will build
+machine learning models, work with large datasets, and turn data into insights
+that drive business decisions.
+
+Responsibilities:
+- Build and evaluate machine learning models for prediction and classification
+- Work with natural language processing (NLP) on text data
+- Clean, transform, and analyze large datasets
+- Communicate findings to stakeholders through clear visualizations
+
+Required skills:
+- Strong Python programming
+- Machine learning (scikit-learn, model evaluation)
+- Natural language processing (NLP)
+- SQL and data wrangling with pandas
+- Statistics and data visualization
+
+Nice to have:
+- Deep learning experience (PyTorch or TensorFlow)
+- Experience deploying models to production

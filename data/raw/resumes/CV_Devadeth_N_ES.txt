@@ -1,0 +1,93 @@
+DEVADETH N
+Resumen
+Ingeniero de IA
+
+Contacto:
+Email: devadethworkemail@gmail.com | Teléfono: +91-7736696955 | Ubicación: Kochi, Kerala
+LinkedIn: linkedin.com/in/devadeth-n | GitHub: github.com/devn-cmd
+
+===============================================================================
+PERFIL PROFESIONAL
+===============================================================================
+Ingeniero de IA/ML con experiencia en pipelines de aprendizaje automático de 
+extremo a extremo, arquitectura RAG y flujos de trabajo multiagente utilizando 
+Python, LangChain y LLM locales. Capacidad demostrada para desarrollar 
+aplicaciones de IA full-stack escalables que integran PNL, visión por computadora 
+y automatización impulsada por API para mejorar las operaciones empresariales.
+
+===============================================================================
+HABILIDADES TÉCNICAS
+===============================================================================
+- Lenguajes: Python, JavaScript, HTML, CSS, SQL
+- IA/ML: Aprendizaje automático, Aprendizaje profundo, CNN, PNL, Arquitectura RAG, 
+  Sistemas multiagente, LangGraph, LangChain, LLM (Ollama, Qwen, Llama3.2, GPT-4o-mini), 
+  FAISS, ChromaDB, Embeddings, sentence-transformers, MCP, Visión por computadora, 
+  Modelado predictivo, Pipelines de ML, Ingeniería de características, Bases de datos vectoriales
+- Desarrollo Web: React.js, Node.js, Express.js, FastAPI, Uvicorn, Streamlit, API REST
+- Herramientas y Frameworks: Git, Docker, Docker Compose, MLflow, Jupyter, Power BI, 
+  UiPath, n8n, Scikit-learn, Pandas, OpenCV, MediaPipe, TensorFlow, PostgreSQL, 
+  Slack SDK, Google Drive API, OAuth
+
+===============================================================================
+EXPERIENCIA LABORAL
+===============================================================================
+Pasante en Ciencia de Datos | Luminar Technolab | Kochi
+Julio 2025 – Febrero 2026
+• Diseño de pipelines de ML y modelos de visión por computadora basados en CNN 
+  utilizando Scikit-learn y TensorFlow, aumentando la precisión predictiva en un 15 %.
+• Creación de paneles de Power BI interactivos con medidas DAX complejas, 
+  impulsando una mejora del 20 % en la toma de decisiones ejecutivas.
+
+Desarrollador RPA | RISS Technologies | Kozhikode
+Junio 2024 – Agosto 2024
+• Desarrollo de flujos de trabajo RPA en UiPath para web scraping a gran escala de 
+  comercio electrónico y generación automatizada de informes financieros EMI.
+• Implementación de sistemas automatizados de manejo de excepciones por correo 
+  electrónico y registro, garantizando alta confiabilidad de procesos y minimizando 
+  la entrada manual.
+
+===============================================================================
+EDUCACIÓN & CERTIFICACIONES
+===============================================================================
+Educación:
+- Licenciatura en Ciencias de la Computación | RSM SNDP Yogam Arts & Science College, Kozhikode
+
+Certificaciones:
+- Ciencia de Datos – Python | NACTET, Nueva Delhi | Calificación: A+ | Luminar Technolab
+
+===============================================================================
+PROYECTOS
+===============================================================================
+Pipeline de Análisis de Datos Multiagente (Nov 2025 – May 2026)
+Tecnologías: Python, LangGraph, LangChain, Llama3.2, FastAPI, Streamlit, Docker, MCP, Slack SDK, Google API, ChromaDB
+• Orquestación de un pipeline de IA multiagente de extremo a extremo (LangGraph, Llama 3.2) 
+  para limpieza automatizada de datos, detección de anomalías y generación de informes.
+• Contenerización de un backend FastAPI mediante Docker, integrando MCP, Slack SDK y 
+  Google APIs para análisis desencadenados por IA.
+
+Aplicación de Mantenimiento Predictivo Impulsada por IA (Marzo 2026)
+Tecnologías: React, Node.js, PostgreSQL, FAISS, Qwen3.5:9b, LangChain, RAG
+• Desarrollo de una aplicación full-stack de mantenimiento predictivo (React, Node.js) 
+  con un motor de puntuación de riesgos de 7 factores para equipos de flota.
+• Implementación de un pipeline RAG FAISS/Qwen3.5 y un motor de factibilidad para 
+  extraer información de manuales y evaluar técnicos.
+
+Sistema RAG PDF – Pipeline de Recuperación Semántica de Documentos (Abril 2026)
+Tecnologías: Python, LangChain, PyPDFLoader, sentence-transformers, ChromaDB, scikit-learn
+• Creación de un pipeline automatizado de ingesta de documentos RAG utilizando PyPDFLoader, 
+  SentenceTransformers y ChromaDB para búsqueda semántica inferior a 100 ms.
+
+Stage Decor – Plataforma de Galería y Reserva de Decoración de Eventos (Abril 2026)
+Tecnologías: React, FastAPI, Python, PostgreSQL, Cloudinary, JWT, Vercel
+• Desarrollo de una plataforma de reservas full-stack (React, FastAPI, PostgreSQL) con 
+  panel de administración seguro por JWT, filtrado por categoría y despliegue escalable en Vercel.
+
+Agente Analista Técnico – Bot de Telegram con IA (Abril 2026)
+Tecnologías: n8n, OpenRouter, GPT-4o-mini, LangChain, API de Telegram
+• Creación de un bot de Telegram impulsado por n8n que integra capacidades de visión 
+  GPT-4o-mini para analizar de forma autónoma gráficos bursátiles e indicadores técnicos.
+
+ML Revisit – Cuadernos de Aprendizaje Automático Aplicado (Marzo 2026)
+Tecnologías: Python, Jupyter, Scikit-learn, Pandas
+• Diseño de modelos predictivos para rotación de empleados, pronóstico de criptomonedas 
+  y agrupación del mercado laboral utilizando métodos de conjunto avanzados.

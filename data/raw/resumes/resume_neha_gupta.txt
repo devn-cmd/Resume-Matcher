@@ -1,0 +1,29 @@
+Neha Gupta
+neha.gupta@email.com | +91 99887 76655 | Delhi, India
+
+SUMMARY
+Data Analyst with 3 years of experience in reporting, SQL, and dashboards.
+Strong in turning data into business insights, currently learning machine
+learning.
+
+EXPERIENCE
+Data Analyst - MarketPulse Analytics
+Apr 2021 - Present
+Built dashboards and reports using SQL and Excel.
+Analyzed large datasets with pandas and created visualizations.
+Presented findings to marketing and sales stakeholders.
+
+Junior Analyst - RetailIQ
+Jan 2019 - Mar 2021
+Cleaned and transformed sales data for reporting.
+Wrote SQL queries to extract weekly performance metrics.
+
+EDUCATION
+B.Com Statistics
+University of Delhi, 2018
+
+SKILLS
+SQL, Python, pandas, data visualization, statistics, Excel, reporting
+
+CERTIFICATIONS
+Google Data Analytics Certificate, 2021
