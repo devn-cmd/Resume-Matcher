@@ -1,9 +1,9 @@
 ## Resume Matcher 🚀
 
-## Steamlit DashBoard    :https://resume-matcher-wsgvqrcy3vuinhxgzkvddo.streamlit.app
-## Unlisted Youtube Vedio:
-## Google Colab          :https://colab.research.google.com/github/devn-cmd/Resume-Matcher/blob/main/resume_matcher_demo.ipynb
-## GitHub Repo           :
+## Streamlit Dashboard: [Open App](https://resume-matcher-wsgvqrcy3vuinhxgzkvddo.streamlit.app)
+## YouTube Video: [Watch Demo](https://youtu.be/lpqVD2dxPUw)
+## Google Colab: [Run Notebook](https://colab.research.google.com/github/devn-cmd/Resume-Matcher/blob/main/resume_matcher_demo.ipynb)
+## GitHub Repo: [Resume-Matcher](https://github.com/devn-cmd/Resume-Matcher)
 
 # For testing resumes and job description are in my data folder
 
