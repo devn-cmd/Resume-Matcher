@@ -24,10 +24,9 @@ try:
 except Exception:
     MATCH_THRESHOLD = 0.50
     ENABLE_ACTIVE_LEARNING = True
- 
+
 st.set_page_config(page_title="Resume Matcher", layout="wide")
- 
- 
+
 
 # Load the SBERT model ONCE, not on every rerun (big speed fix)
 @st.cache_resource
@@ -41,11 +40,17 @@ def get_matcher():
 def get_ranker():
     """Load or train the active-learning ranker on startup."""
     return load_or_train_from_disk() if ENABLE_ACTIVE_LEARNING else ActiveLearningRanker()
- 
- 
+
+
 with st.spinner("Loading multilingual model (first time only)..."):
     matcher = get_matcher()
 ranker = get_ranker()
+
+# Tracks which candidates have already been labelled this session,
+# so Shortlist/Reject can only be logged once per candidate.
+# candidate name -> "shortlist" / "reject"
+if "labeled" not in st.session_state:
+    st.session_state["labeled"] = {}
 
 # --- Header (Step 5) ---
 st.title("Resume Screening & Skill Matching")
@@ -76,7 +81,7 @@ st.sidebar.header("Settings")
 threshold = st.sidebar.slider("Match threshold", 0.0, 1.0,
                               float(MATCH_THRESHOLD), 0.01)
 only_suitable = st.sidebar.checkbox("Show only suitable candidates")
- 
+
 st.sidebar.markdown("---")
 st.sidebar.header("Active learning")
 pos, neg = class_balance()
@@ -86,7 +91,7 @@ if ranker.is_trained():
     st.sidebar.success(f"Adaptive re-ranker active (trained on {ranker.n_train_samples} samples)")
 else:
     st.sidebar.info("Adaptive re-ranker not active yet — using static blend.")
- 
+
 if st.sidebar.button("Retrain re-ranker on accumulated feedback"):
     df = load_feedback()
     report = ranker.fit(df)
@@ -97,7 +102,7 @@ if st.sidebar.button("Retrain re-ranker on accumulated feedback"):
     else:
         st.sidebar.warning(f"Not retrained: {report.reason}")
     st.cache_resource.clear()  # force the ranker to reload on next interaction
- 
+
 if ranker.is_trained():
     with st.sidebar.expander("Learned coefficients (interpretability)"):
         coefs = ranker.coefficients()
@@ -121,7 +126,7 @@ if st.button("Rank candidates"):
                 os.unlink(path)
             # Use the active-learning aware ranking; falls back to static when untrained.
             results = matcher.rank_with_feedback(jd, resumes, ranker=ranker)
- 
+
             ranking = []
             jd_language = results[0].jd_language if results else "en"
             for r in results:
@@ -149,10 +154,13 @@ if st.button("Rank candidates"):
         st.session_state["ranking"] = ranking
         st.session_state["jd_language"] = jd_language
         st.session_state["jd_id"] = jd_id
- 
- 
+        # Fresh ranking ⇒ clear old labels so the buttons reappear and you
+        # can re-label against the newly retrained model.
+        st.session_state["labeled"] = {}
+
+
 def _log_action(r: dict, action: str):
-    """Persist a recruiter action as a feedback record."""
+    """Persist a recruiter action as a feedback record (once per candidate)."""
     rec = FeedbackRecord(
         jd_id=st.session_state.get("jd_id", "jd_session"),
         resume_id=r["Candidate"],
@@ -165,39 +173,46 @@ def _log_action(r: dict, action: str):
         action=action,
     )
     log_feedback(rec)
- 
- 
+    st.session_state["labeled"][r["Candidate"]] = action   # remember it
+
+
 if "ranking" in st.session_state:
     ranking = st.session_state["ranking"]
     jd_language = st.session_state.get("jd_language", "en")
     st.info(f"Job description language detected: **{language_name(jd_language)}**")
- 
+
     for r in ranking:
         # Use adaptive_score for suitability when available; static otherwise.
         score_for_decision = r["Adaptive"] if r["Adaptive"] is not None else r["Score"]
         r["suitable"] = score_for_decision >= threshold
     shown = [r for r in ranking if r["suitable"] or not only_suitable]
- 
+
     # ---- Review queue (active-learning surface) ----
     queue = [r for r in ranking if r["Uncertain"]]
     if queue:
-        st.subheader("🔍 Recruiter review queue (uncertain — your label helps most here)")
+        st.subheader("🔍 Recruiter review queue ")
         st.caption(
             "These candidates sit closest to the decision boundary. Labelling them "
             "improves the re-ranker faster than labelling obvious cases."
         )
         for r in queue:
+            cand = r["Candidate"]
             cols = st.columns([3, 1, 1, 1])
             tag = " 🌐" if r["cross_lingual"] else ""
-            cols[0].markdown(f"**{r['Candidate']}**{tag} — "
+            cols[0].markdown(f"**{cand}**{tag} — "
                              f"static {r['Score']:.2f}"
                              + (f" · adaptive {r['Adaptive']:.2f}" if r['Adaptive'] is not None else ""))
-            if cols[1].button("✅ Shortlist", key=f"sl_{r['Candidate']}"):
-                _log_action(r, "shortlist"); st.toast("Logged: shortlist"); st.rerun()
-            if cols[2].button("❌ Reject", key=f"rj_{r['Candidate']}"):
-                _log_action(r, "reject");    st.toast("Logged: reject");    st.rerun()
+
+            done = st.session_state["labeled"].get(cand)
+            if done:
+                cols[1].caption(f"✓ {done}")          # already labelled — no buttons
+            else:
+                if cols[1].button("✅ Shortlist", key=f"sl_{cand}"):
+                    _log_action(r, "shortlist"); st.toast("Logged: shortlist"); st.rerun()
+                if cols[2].button("❌ Reject", key=f"rj_{cand}"):
+                    _log_action(r, "reject");    st.toast("Logged: reject");    st.rerun()
             cols[3].caption("uncertain")
- 
+
     # ---- Ranked table ----
     df = pd.DataFrame([{
         "Candidate": r["Candidate"],
@@ -224,7 +239,7 @@ if "ranking" in st.session_state:
         df.to_csv(index=False).encode("utf-8-sig"),
         file_name="ranked_candidates.csv", mime="text/csv",
     )
- 
+
     # ---- Skill breakdown with per-candidate feedback buttons ----
     st.subheader("Skill breakdown")
     for r in shown:
@@ -233,13 +248,17 @@ if "ranking" in st.session_state:
         with st.expander(f"{flag}  {r['Candidate']}  ·  {lang_tag}"):
             # Feedback buttons live with the candidate for context.
             bcols = st.columns([1, 1, 4])
-            if bcols[0].button("✅ Shortlist", key=f"slx_{r['Candidate']}"):
-                _log_action(r, "shortlist"); st.toast("Logged: shortlist"); st.rerun()
-            if bcols[1].button("❌ Reject", key=f"rjx_{r['Candidate']}"):
-                _log_action(r, "reject");    st.toast("Logged: reject");    st.rerun()
+            done = st.session_state["labeled"].get(r["Candidate"])
+            if done:
+                bcols[0].success(f"Logged: {done}")      # already labelled — no buttons
+            else:
+                if bcols[0].button("✅ Shortlist", key=f"slx_{r['Candidate']}"):
+                    _log_action(r, "shortlist"); st.toast("Logged: shortlist"); st.rerun()
+                if bcols[1].button("❌ Reject", key=f"rjx_{r['Candidate']}"):
+                    _log_action(r, "reject");    st.toast("Logged: reject");    st.rerun()
             bcols[2].caption("Your judgement is stored as a feature vector + label "
                              "(no raw resume text retained).")
- 
+
             st.markdown("**Matched skills (with evidence):**")
             if r["matched"]:
                 for skill in r["matched"]:
@@ -247,9 +266,9 @@ if "ranking" in st.session_state:
                     st.markdown(f"- **{skill}**" + (f" — _{sent}_" if sent else ""))
             else:
                 st.markdown("_none_")
- 
+
             st.markdown(f"**Missing skills:** {', '.join(r['missing']) if r['missing'] else '—'}")
- 
+
             # --- Upskilling roadmaps ---
             if r.get("recommendations"):
                 st.markdown("---")
@@ -260,7 +279,7 @@ if "ranking" in st.session_state:
                         st.markdown(f"&nbsp;&nbsp;&nbsp;&nbsp;• **Step {step['step']}:** "
                                     f"{step['action']} — [{step['resource']}]")
                 st.markdown("---")
- 
+
             if r["experience"]:
                 st.markdown("**Experience:**")
                 for e in r["experience"]:
